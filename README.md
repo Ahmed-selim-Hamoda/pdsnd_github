@@ -14,6 +14,7 @@ chicago.csv
 new_york_city.csv
 washington.csv
 bikeshare.py
-
+### Author
+Ahmed Hamoda 
 ### Credits
 https://git-scm.com/doc
