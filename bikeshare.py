@@ -16,7 +16,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # get user input for city (chicago, new york city, washington)
     while True:
         city = input ('please choose a city from chicago , new york city or washington: ').lower()
@@ -24,8 +24,8 @@ def get_filters():
             print('Invalid input.please enter the correct city from chicago , new york city or washington: '.lower())
         else:
             break
-                
-    
+
+
     # get user input for month (all, january, february, ... , june)
     while True:
         months= ['january','february','march','april','may','june','all']
@@ -34,8 +34,8 @@ def get_filters():
             break
         else:
             print('Invalid input.Please enter the correct month from (January, February, March, April, May, June) or choose (all)to get results for all months: '.lower())
-            
-                
+
+
     #  get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         days = ['saturday','sunday','monday','tuesday','wednesday','thursday','friday','all']
@@ -44,9 +44,9 @@ def get_filters():
             break
         else:
             print ('Invalid input,Please choose a day or choose (all) to get results for all days: '.lower())
-            
-        
-   
+
+
+
 
     print('-'*40)
     return city, month, day
@@ -83,7 +83,7 @@ def load_data(city, month, day):
         #creating DataFrame
         df = df[df['month'] == month]
 
-    #filter by day 
+    #filter by day
     if day != 'all':
         #creating DataFrame
         df = df[df['day_of_week'] == day.title()]
@@ -174,7 +174,7 @@ def user_stats(df):
     if 'Gender' in df:
         gender_count = df['Gender'].value_counts()
         print('the count of gender is: ',gender_count)
-        
+
 
 
     #  Display earliest, most recent, and most common year of birth
@@ -197,7 +197,7 @@ def user_stats(df):
 def display_raw_data(df):
     """Displays raw data as per user request."""
 
-    
+
     x = 0
     user_request = input('would you like to see the first 5 rows of data? please enter yes or no: ').lower()
     while True:
@@ -212,22 +212,22 @@ def display_raw_data(df):
 
 def main():
     while True:
-        
+
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        
-        
+
+
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df)
         display_raw_data(df)
-        
+
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
+            print("Thanks for using the service")
             break
-            
+
 if __name__ == "__main__":
 	main()
-         
